@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using AugustoGamesAndroid.GamePlay;
 using AugustoGamesAndroid.GamePlay.Players;
 using Java.Util;
+using AugustoGamesAndroid.GamePlay.TileSets;
 
 /***
  * Top Down Scene
@@ -18,6 +19,8 @@ namespace AugustoGamesAndroid.GamePlay.Scenes
 {
     public class FirstScene
     {
+        public int tileSize = 64;
+        
         private int[,] tileMap = new int[,]
         {
             { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -46,6 +49,7 @@ namespace AugustoGamesAndroid.GamePlay.Scenes
         private int score;
         private SpriteFont font;
 
+        private FirstSceneTileSet tileSet;
         public FirstScene(Game1 Game, SpriteBatch spriteBatch, Dictionary<int, Texture2D> tileTextures)
         {
             var Content = Game.Content;
@@ -65,6 +69,9 @@ namespace AugustoGamesAndroid.GamePlay.Scenes
                 enemies.Add(enemy);
             }
 
+            // TODO: Inicializa o TileSet
+            //tileSet = new FirstSceneTileSet(tileMap);
+
             // Inicialize a fonte
             font = Content.Load<SpriteFont>("font");
         }
@@ -73,8 +80,25 @@ namespace AugustoGamesAndroid.GamePlay.Scenes
         {
             spriteBatch.Begin();
 
+            /*
+             Para adicionar a câmera ao arquivo FirstScene.cs, você pode instanciar a classe Camera
+             e passá-la como parâmetro para o método Draw da classe FirstSceneTileSet.
+            Você também pode adicionar o controle de câmera à cena atualizando a posição da
+            câmera com base na posição do jogador. Por exemplo:
+             */
+
+            // TODO: Desenho do mapa usando a classe TileSet .. colocar para a câmera seguir o jogador
+            // Instancie a câmera no construtor da classe FirstScene
+            var camera = new Camera(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
+
+            // Atualize a posição da câmera com base na posição do jogador no método Update
+            camera.Follow(player, tileMap.GetLength(0), tileMap.GetLength(1), tileSize);
+
+            // Passe a câmera como parâmetro para o método Draw da classe FirstSceneTileSet
+            tileSet.Draw(spriteBatch, camera);
+
+
             // Desenhe o mapa de tiles
-            int tileSize = 64;
             for (int y = 0; y < tileMap.GetLength(0); y++)
             {
                 for (int x = 0; x < tileMap.GetLength(1); x++)

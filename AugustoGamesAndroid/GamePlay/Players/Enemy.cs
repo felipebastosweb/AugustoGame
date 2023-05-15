@@ -5,6 +5,7 @@ namespace AugustoGamesAndroid.GamePlay.Players
 {
     public class Enemy
     {
+        const int tileSize = 64;
         public Vector2 Position { get; set; }
         protected Vector2 StartPosition { get; set; }
         public Texture2D Texture { get; set; }
