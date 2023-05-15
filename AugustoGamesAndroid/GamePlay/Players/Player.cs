@@ -6,6 +6,10 @@ using Microsoft.Xna.Framework.Input;
  * https://www.gameart2d.com/freebies.html
  * https://www.gameart2d.com/the-boy---free-sprites.html
  * https://www.gameart2d.com/cute-girl-free-sprites.html
+ * https://craftpix.net/freebies/filter/sprites/page/5/
+ * https://craftpix.net/freebies/free-warrior-4-direction-character-sprites/
+ * https://craftpix.net/freebies/free-citizen-artist-astrologer-4-direction-npc-character-pack/
+ * https://craftpix.net/freebies/filter/sprites/page/6/
  * **/
 
 namespace AugustoGamesAndroid.GamePlay.Players

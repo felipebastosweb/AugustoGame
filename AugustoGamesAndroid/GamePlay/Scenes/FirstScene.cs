@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 using AugustoGamesAndroid.GamePlay;
 using AugustoGamesAndroid.GamePlay.Players;
+using Java.Util;
 
 /***
  * Top Down Scene
  * https://cainos.itch.io/pixel-art-top-down-basic
  * https://opengameart.org/
+ * https://craftpix.net/freebies/top-down-crystals-pixel-art/
+ * https://craftpix.net/freebies/free-top-down-military-boats-pixel-art/
  * **/
 
 namespace AugustoGamesAndroid.GamePlay.Scenes

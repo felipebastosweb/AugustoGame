@@ -7,6 +7,12 @@ using System.Collections.Generic;
 using AugustoGamesAndroid.GamePlay.Players;
 using AugustoGamesAndroid.GamePlay.Scenes;
 
+/***
+ * https://craftpix.net/freebies/
+ * https://craftpix.net/freebies/page/2/
+ * https://craftpix.net/freebies/free-level-map-pixel-art-assets-pack/
+ * **/
+
 namespace AugustoGamesAndroid.GamePlay
 {
     public class Game1 : Game
