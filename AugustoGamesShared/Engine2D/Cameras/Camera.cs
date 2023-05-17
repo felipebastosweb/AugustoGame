@@ -1,9 +1,10 @@
-﻿using AugustoGamesAndroid.GamePlay.Players;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
-namespace AugustoGamesAndroid.GamePlay.Scenes
+using Engine2D.Entities;
+
+namespace Engine2D.Cameras
 {
-    
+
     public class Camera
     {
         public Vector2 Position { get; set; }
@@ -16,10 +17,10 @@ namespace AugustoGamesAndroid.GamePlay.Scenes
             ViewportHeight = viewportHeight;
         }
 
-        public void Follow(Player player, int mapWidth, int mapHeight, int tileSize)
+        public void Follow(Hero player, int mapWidth, int mapHeight, int tileSize)
         {
-            float cameraX = player.Position.X - ViewportWidth / 2;
-            float cameraY = player.Position.Y - ViewportHeight / 2;
+            float cameraX = player.CurrentPosition.X - ViewportWidth / 2;
+            float cameraY = player.CurrentPosition.Y - ViewportHeight / 2;
 
             if (cameraX < 0)
                 cameraX = 0;

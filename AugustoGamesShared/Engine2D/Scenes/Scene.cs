@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-using AugustoGamesAndroid.GamePlay;
-using AugustoGamesAndroid.GamePlay.Players;
-using Java.Util;
-using AugustoGamesAndroid.GamePlay.TileSets;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+using Engine2D.Games;
+using Engine2D.Entities;
+using Engine2D.TileSets;
+using Engine2D.Cameras;
 
 /***
  * Top Down Scene
@@ -15,31 +16,14 @@ using AugustoGamesAndroid.GamePlay.TileSets;
  * https://craftpix.net/freebies/free-top-down-military-boats-pixel-art/
  * **/
 
-namespace AugustoGamesAndroid.GamePlay.Scenes
+namespace Engine2D.Scenes
 {
-    public class FirstScene
+    public class Scene
     {
-        public int tileSize = 64;
+        public Camera camera;
+        public TileSet tileMap;
         
-        private int[,] tileMap = new int[,]
-        {
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 2, 0, 1 },
-            { 1, 0, 2, 0, 0, 0, 0, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 2, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 2, 0, 1 },
-            { 1, 0, 2, 0, 0, 0, 0, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 2, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1 }
-        };
-
-        private Game1 Game;
+        private GameBase Game;
         private Dictionary<int, Texture2D> tileTextures;
         private SpriteBatch spriteBatch;
 
@@ -49,16 +33,16 @@ namespace AugustoGamesAndroid.GamePlay.Scenes
         private int score;
         private SpriteFont font;
 
-        private FirstSceneTileSet tileSet;
-        public FirstScene(Game1 Game, SpriteBatch spriteBatch, Dictionary<int, Texture2D> tileTextures)
+        private TileSet tileSet;
+        public Scene(GameBase Game, TileSet tileMap)
         {
             var Content = Game.Content;
-            this.spriteBatch = spriteBatch;
+            this.spriteBatch = Game.spriteBatch;
             this.tileTextures = tileTextures;
 
             // Inicialize o jogador
             Texture2D playerTexture = Content.Load<Texture2D>("player");
-            player = new Player(new Vector2(100, 100), playerTexture);
+            player = new Hero(new Vector2(100, 100), playerTexture);
 
             // Inicialize os inimigos
             enemies = new List<Enemy>();
@@ -75,6 +59,17 @@ namespace AugustoGamesAndroid.GamePlay.Scenes
             // Inicialize a fonte
             font = Content.Load<SpriteFont>("font");
         }
+
+        public void SetPlayer(Hero player)
+        {
+            this.player = player;
+        }
+
+        public void AddEnemyList(List<Enemy> enemies)
+        {
+            this.enemies = enemies;
+        }
+
 
         public void Draw()
         {

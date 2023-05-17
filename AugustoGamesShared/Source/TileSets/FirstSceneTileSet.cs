@@ -1,22 +1,44 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using AugustoGamesAndroid.GamePlay.Scenes;
-using AugustoGamesAndroid.GamePlay.Players;
-using Java.Util;
+using Engine2D.Cameras;
+using AugustoGamesShared.GamePlay.Scenes;
+using Engine2D.Entities;
 
-namespace AugustoGamesAndroid.GamePlay.TileSets
+namespace TileSets
 {
 
-    public class FirstSceneTileSet
+    public class TileSheet
     {
         private Texture2D tilesetTexture;
         private int tileWidth;
         private int tileHeight;
         private int[,] map;
 
+
+        /*
+        private int[,] tileMap = new int[,]
+        {
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 2, 0, 1 },
+            { 1, 0, 2, 0, 0, 0, 0, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 2, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 2, 0, 1 },
+            { 1, 0, 2, 0, 0, 0, 0, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 2, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+        };
+        */
+
+
         // TODO: tornar a inicialização do tileSet independente da classe FirstScene
-        public FirstSceneTileSet(Texture2D tilesetTexture, int tileWidth, int tileHeight, int[,] map)
+        public TileSheet(Texture2D tilesetTexture, int tileWidth, int tileHeight, int[,] map)
         {
             this.tilesetTexture = tilesetTexture;
             this.tileWidth = tileWidth;

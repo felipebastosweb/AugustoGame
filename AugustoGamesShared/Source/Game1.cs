@@ -4,8 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.Collections.Generic;
 
-using AugustoGamesAndroid.GamePlay.Players;
-using AugustoGamesAndroid.GamePlay.Scenes;
+using AugustoGamesShared.GamePlay.Entities;
+using AugustoGamesShared.GamePlay.Scenes;
 
 /***
  * https://craftpix.net/freebies/
@@ -13,17 +13,17 @@ using AugustoGamesAndroid.GamePlay.Scenes;
  * https://craftpix.net/freebies/free-level-map-pixel-art-assets-pack/
  * **/
 
-namespace AugustoGamesAndroid.GamePlay
+namespace AugustoGamesShared.GamePlay
 {
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private FirstScene firstScene;
+        //private FirstScene firstScene;
 
         private Player player;
-        private List<Enemy> enemies;
+        private List<Sprite> enemies;
 
         public Game1()
         {
@@ -57,20 +57,22 @@ namespace AugustoGamesAndroid.GamePlay
             player = new Player(new Vector2(100, 100), playerTexture);
 
             // Inicialize os inimigos
-            enemies = new List<Enemy>();
+            enemies = new List<Sprite>();
             Texture2D enemyTexture = Content.Load<Texture2D>("enemy");
             for (int i = 0; i < 3; i++)
             {
-                Enemy enemy = new Enemy(new Vector2(200 + i * 100, 200), enemyTexture);
+                Sprite enemy = new Enemy(new Vector2(200 + i * 100, 200), enemyTexture);
                 enemies.Add(enemy);
             }
 
+            /*
             // Inicialize a primeira cena
             Dictionary<int, Texture2D> tileTextures = new Dictionary<int, Texture2D>();
             tileTextures.Add(0, Content.Load<Texture2D>("empty_tile"));
             tileTextures.Add(1, Content.Load<Texture2D>("wall_tile"));
             tileTextures.Add(2, Content.Load<Texture2D>("floor_tile"));
             firstScene = new FirstScene(this, spriteBatch, tileTextures);
+            */
 
         }
         protected override void UnloadContent()
@@ -86,7 +88,7 @@ namespace AugustoGamesAndroid.GamePlay
             player.Update(gameTime);
 
             // Atualize os inimigos
-            foreach (Enemy enemy in enemies)
+            foreach (Sprite enemy in enemies)
             {
                 enemy.Update(gameTime, player.Position);
             }
@@ -97,10 +99,19 @@ namespace AugustoGamesAndroid.GamePlay
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
 
-            // Desenhe a primeira cena
-            firstScene.Draw();
+            // TODO: [BUG] testando o desenho dos jogadores de forma temporária até remover bugs de load de assets
+            player.Draw(spriteBatch);
+            foreach(var enemy in enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
 
+            // TODO: [Bug] (desabilitado para correção de bug) Desenhe a primeira cena
+            //firstScene.Draw();
+
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

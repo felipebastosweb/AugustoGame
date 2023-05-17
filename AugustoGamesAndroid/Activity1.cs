@@ -4,7 +4,7 @@ using Android.OS;
 using Android.Views;
 using Microsoft.Xna.Framework;
 
-using AugustoGamesAndroid.GamePlay;
+using AugustoGamesShared.GamePlay;
 
 namespace AugustoGamesAndroid
 {

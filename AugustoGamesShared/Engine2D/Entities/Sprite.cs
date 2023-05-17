@@ -1,16 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AugustoGamesAndroid.GamePlay.Players
+namespace Engine2D.Entities
 {
-    public class Enemy
+    public class Sprite : Component
     {
         const int tileSize = 64;
-        public Vector2 Position { get; set; }
         protected Vector2 StartPosition { get; set; }
         public Texture2D Texture { get; set; }
+        public float speed = 50f;
 
-        public Enemy(Vector2 position, Texture2D texture)
+        public Sprite(Vector2 position, Texture2D texture)
         {
             Position = position;
             StartPosition = position;
@@ -23,7 +23,6 @@ namespace AugustoGamesAndroid.GamePlay.Players
         }
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
-            float speed = 50f;
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             float distanceToPlayer = Vector2.Distance(Position, playerPosition);
             float distanceToStart = Vector2.Distance(Position, StartPosition);

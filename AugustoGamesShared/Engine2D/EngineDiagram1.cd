@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Engine2D.Games.GameBase">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAQAAAAAAAAgAAEAEAAgBAAAAAAAQAAA=</HashCode>
+      <FileName>Engine2D\Games\GameBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Levels" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Engine2D.Levels.Level">
+    <Position X="3.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAAAAAAgAAIAAAAAAAQAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Engine2D\Levels\Level.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="CurrentScene" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Engine2D.Entities.Player">
+    <Position X="3.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIJAAgAgAAAAAEAQAAAAAAAABAIAAAAAAAA=</HashCode>
+      <FileName>Engine2D\Entities\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine2D.Scenes.Scene">
+    <Position X="3.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEAAAgAAAjAAAAAIAAAAAAgAAAABAAIAQAAAAAA=</HashCode>
+      <FileName>Engine2D\Scenes\Scene.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="player" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
